@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import { renderCodeMirror } from "../modules/codemirror";
+import {
+  getFoldGutterLineNumbers,
+  renderCodeMirror,
+} from "../modules/codemirror";
 import { getFirstLevelChildren } from "../modules/codemirror";
 import Button from "@mui/material/Button";
 import "../css/Editor.css";
 export const Editor = () => {
   const textareaRef = useRef(null);
   const [view, setView] = useState(null);
-  const [textareaData, setTextareaData] = useState("");
   const data = {
     parent: {
       child1: {
@@ -40,6 +42,12 @@ export const Editor = () => {
       child1: {
         name: "Child 1",
         age: 5,
+        data: [
+          { id: 1, name: "John", age: 30 },
+          { id: 2, name: "Alice", age: 25 },
+          { id: 3, name: "Bob", age: 35 },
+          { id: 4, name: "Emily", age: 28 },
+        ],
       },
     },
   };
@@ -63,7 +71,7 @@ export const Editor = () => {
     <div className="container">
       <div className="editor-container">
         <textarea className="codemirror-editor" ref={textareaRef}></textarea>
-        <textarea className="output" value={textareaData}></textarea>
+        <textarea className="output" id="output"></textarea>
       </div>
       <div className="button-container">
         <Button variant="contained" color="secondary" onClick={updateEditor}>
@@ -73,7 +81,7 @@ export const Editor = () => {
           variant="contained"
           color="secondary"
           onClick={() => {
-            setTextareaData(view.state.doc.toString());
+            getFoldGutterLineNumbers(view);
           }}
         >
           Log JSON
