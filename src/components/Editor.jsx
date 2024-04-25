@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  getFoldGutterLineNumbers,
-  renderCodeMirror,
-} from "../modules/codemirror";
-import { getFirstLevelChildren } from "../modules/codemirror";
+import { renderCodeMirror } from "../modules/codemirror";
 import Button from "@mui/material/Button";
 import "../css/Editor.css";
+import { Table } from "./Table";
 export const Editor = () => {
   const textareaRef = useRef(null);
   const [view, setView] = useState(null);
@@ -57,6 +54,7 @@ export const Editor = () => {
       setView(editorView);
     }
   }, [textareaRef]);
+
   const updateEditor = () => {
     try {
       let transaction = view.state.update({
@@ -67,17 +65,20 @@ export const Editor = () => {
       console.error("Error occurred while dispatching transaction:", error);
     }
   };
+
   return (
-    <div className="container">
-      <div className="editor-container">
-        <textarea className="codemirror-editor" ref={textareaRef}></textarea>
-        <textarea className="output" id="output"></textarea>
+    <div className="editor-container">
+      <div className="codemirror-editor">
+        <textarea ref={textareaRef}></textarea>
       </div>
+
+      {/* <textarea className="output" id="output"></textarea> */}
+
       <div className="button-container">
         <Button variant="contained" color="secondary" onClick={updateEditor}>
           Print Json
         </Button>
-        <Button
+        {/* <Button
           variant="contained"
           color="secondary"
           onClick={() => {
@@ -113,7 +114,7 @@ export const Editor = () => {
           variant="contained"
           color="secondary"
           onClick={() => {
-            getFirstLevelChildren(JSON.parse(view.state.doc));
+            countChildren(view.state.doc);
           }}
         >
           First Level of Children
@@ -126,8 +127,10 @@ export const Editor = () => {
           }}
         >
           Get Cursor
-        </Button>
+        </Button> */}
       </div>
+
+      <Table></Table>
     </div>
   );
 };
