@@ -1,16 +1,13 @@
-import { Editor } from "./components/Editor";
+import { HomePage } from "./pages/HomePage";
 import React, { useState, useEffect } from "react";
-import { Test } from "./components/Test";
-import "./App.css";
+import "./css/App.css";
 
 function App() {
   return (
     <>
       <div className="container">
-        <Editor></Editor>
-        <Editor></Editor>
+        <HomePage></HomePage>
       </div>
-      <Test></Test>
     </>
   );
 }

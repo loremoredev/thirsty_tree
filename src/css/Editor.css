@@ -15,8 +15,9 @@
 }
 
 .cm-editor {
-  height: 100%;
-  width: 50%;
+  height: 75vh;
+  margin-bottom: 30px;
+  border: 3px solid gray;
 }
 .output {
   width: 50%;
