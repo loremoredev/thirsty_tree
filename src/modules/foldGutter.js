@@ -9,7 +9,7 @@ import {
   unfoldEffect,
 } from "@codemirror/language";
 import { RangeSetBuilder } from "@codemirror/state";
-import { getFirstLevelChildren } from "./codemirror.js";
+// import { getFirstLevelChildren } from "./codemirror.js";
 
 function findFold(state, from, to) {
   let found = null;

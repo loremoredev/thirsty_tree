@@ -35,7 +35,7 @@ export const SplitButton = ({ setFilter, options }) => {
 
     setOpen(false);
   };
-  console.log(options[selectedIndex]);
+
   return (
     <React.Fragment>
       <ButtonGroup
@@ -52,7 +52,7 @@ export const SplitButton = ({ setFilter, options }) => {
           aria-expanded={open ? "true" : undefined}
           aria-label="select merge strategy"
           aria-haspopup="menu"
-          onClick={handleToggle}
+          onClick={options.length > 0 ? handleToggle : undefined}
         >
           <ArrowDropDownIcon />
         </Button>

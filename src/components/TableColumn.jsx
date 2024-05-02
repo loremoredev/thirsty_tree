@@ -3,7 +3,7 @@ import "../css/Table.css";
 import { handleTableExpand } from "../modules/codemirror";
 import upArrow from "../images/upArrow.svg";
 import downArrow from "../images/downArrow.svg";
-export const TableColumn = ({ item, filter }) => {
+export const TableColumn = ({ item, filter, id }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className={`${item[0][0] !== filter ? "hidden" : null} table-row`}>
@@ -13,7 +13,7 @@ export const TableColumn = ({ item, filter }) => {
         <span
           className="expand-button"
           onClick={() => {
-            handleTableExpand(event);
+            handleTableExpand(event, id);
             setIsExpanded(!isExpanded);
           }}
         >

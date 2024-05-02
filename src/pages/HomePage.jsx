@@ -4,8 +4,8 @@ import { Editor } from "../components/Editor";
 export const HomePage = () => {
   return (
     <>
-      <Editor></Editor>
-      <Editor></Editor>
+      <Editor id={1}></Editor>
+      <Editor id={2}></Editor>
     </>
   );
 };

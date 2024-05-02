@@ -9,13 +9,16 @@ import { basicSetup } from "codemirror";
 import { getFirstLevelChildren, countChildren } from "../modules/codemirror";
 import { useState } from "react";
 import "../css/Editor.css";
-export const Editor = () => {
+export const Editor = ({ id }) => {
   const [childCountArray, setChildCountArray] = useState([]);
+  const [filter, setFilter] = useState("root");
 
   const editor = useRef();
   let updateListernerExtension = EditorView.updateListener.of((view) => {
     if (view.docChanged) {
+      setFilter("root");
       getFirstLevelChildren(JSON.parse(view.state.doc));
+
       setChildCountArray(countChildren(JSON.parse(view.state.doc)));
     }
   });
@@ -40,7 +43,12 @@ export const Editor = () => {
   return (
     <div className="editor-container">
       <div ref={editor}></div>
-      <Table childCountArray={childCountArray}></Table>
+      <Table
+        childCountArray={childCountArray}
+        id={id}
+        filter={filter}
+        setFilter={setFilter}
+      ></Table>
     </div>
   );
 };

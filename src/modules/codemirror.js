@@ -1,45 +1,5 @@
 let countArray;
 let allLevelArray = [];
-
-export const handleTableExpand = (event) => {
-  const parent = event.target.closest(".table-row");
-  if (parent.textContent.includes("root")) {
-    const tableRows = document.querySelectorAll(".table-row");
-    tableRows.forEach((row) => {
-      const tableDataLeft = row.firstElementChild;
-      if (tableDataLeft.textContent === "1 st level parent") {
-        if (row.classList.contains("hidden")) {
-          row.classList.remove("hidden");
-        } else {
-          row.classList.add("hidden");
-        }
-      }
-    });
-  } else {
-    const text = parent.firstElementChild.textContent;
-    let tempParent = parent;
-    let removeHidden = true;
-    const tableRows = document.querySelectorAll(".table-row");
-    tableRows.forEach((row) => {
-      const parent2 = tempParent.nextElementSibling;
-      if (parent2) {
-        if (parent2.firstElementChild.textContent === text) {
-          removeHidden = false;
-          return;
-        }
-        if (removeHidden) {
-          if (parent2.classList.contains("hidden")) {
-            parent2.classList.remove("hidden");
-          } else {
-            parent2.classList.add("hidden");
-          }
-        }
-      }
-      tempParent = parent2;
-    });
-  }
-};
-
 countArray = [0];
 let addRoot = true;
 export const getFirstLevelChildren = (data) => {
@@ -100,5 +60,66 @@ export const countChildren = (jsonObj, level = 1, prefix = "", result = {}) => {
       result[currentPrefix] = 0;
     }
   }
+  console.log(allLevelArray);
   return allLevelArray;
+};
+
+export const handleTableExpand = (event, id) => {
+  const parent = event.target.closest(".table-row");
+  if (parent.textContent.includes("root")) {
+    const table = document.getElementById(`${id}`);
+    const tableRows = table.querySelectorAll(".table-row");
+    tableRows.forEach((row) => {
+      const tableDataLeft = row.firstElementChild;
+      if (tableDataLeft.textContent === "1 st level parent") {
+        if (row.classList.contains("hidden")) {
+          row.classList.remove("hidden");
+        } else {
+          row.classList.add("hidden");
+        }
+      }
+    });
+  } else {
+    const text = parent.firstElementChild.textContent;
+    let nextLevelParentText = "";
+    if (text === "1 st level parent") nextLevelParentText = "2 nd level parent";
+    else if (text === "2 nd level parent")
+      nextLevelParentText = "3 rd level parent";
+    else {
+      const level = Number(text[0]);
+      nextLevelParentText = `${level + 1} th level parent`;
+    }
+
+    let tempParent = parent;
+    let removeHidden = true;
+
+    const table = document.getElementById(`${id}`);
+    const tableRows = table.querySelectorAll(".table-row");
+    tableRows.forEach((row) => {
+      let parent2;
+      if (tempParent.nextElementSibling)
+        parent2 = tempParent.nextElementSibling;
+      else return;
+      if (parent2) {
+        if (parent2.firstElementChild.textContent === text) {
+          removeHidden = false;
+          return;
+        }
+        if (removeHidden) {
+          console.log(nextLevelParentText);
+          // if (
+          //   parent2.firstElementChild.textContent === nextLevelParentText ||
+          //   "child"
+          // ) {
+          if (parent2.classList.contains("hidden")) {
+            parent2.classList.remove("hidden");
+          } else {
+            parent2.classList.add("hidden");
+          }
+        }
+        // }
+      }
+      tempParent = parent2;
+    });
+  }
 };
