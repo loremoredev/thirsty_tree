@@ -1,11 +1,18 @@
 import React from "react";
-
 import { Editor } from "../components/Editor";
-export const HomePage = () => {
+import { NavBar } from "../components/NavBar";
+import "../css/HomePage.css";
+export const HomePage = ({ setCustomTheme, customTheme }) => {
   return (
     <>
-      <Editor id={1}></Editor>
-      <Editor id={2}></Editor>
+      <NavBar
+        setCustomTheme={setCustomTheme}
+        customTheme={customTheme}
+      ></NavBar>
+      <div className="container">
+        <Editor id={1}></Editor>
+        <Editor id={2}></Editor>
+      </div>
     </>
   );
 };

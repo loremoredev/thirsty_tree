@@ -1,15 +1,24 @@
 import { HomePage } from "./pages/HomePage";
 import React, { useState, useEffect } from "react";
-import "./css/App.css";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
-function App() {
+export default function App() {
+  const [customTheme, setCustomTheme] = useState("light");
+  const manageTheme = createTheme({
+    palette: {
+      mode: customTheme,
+    },
+  });
   return (
-    <>
-      <div className="container">
-        <HomePage></HomePage>
-      </div>
-    </>
+    <React.StrictMode>
+      <ThemeProvider theme={manageTheme}>
+        <CssBaseline />
+        <HomePage
+          setCustomTheme={setCustomTheme}
+          customTheme={customTheme}
+        ></HomePage>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 }
-
-export default App;

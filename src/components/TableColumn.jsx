@@ -6,7 +6,7 @@ import downArrow from "../images/downArrow.svg";
 export const TableColumn = ({ item, filter, id }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className={`${item[0][0] !== filter ? "hidden" : null} table-row`}>
+    <div className={`${item[0][0] !== filter && "hidden"} table-row`}>
       <div>{item[0][0]}</div>
       <div>{item[0][1]}</div>
       {item[0][0] !== "child" ? (

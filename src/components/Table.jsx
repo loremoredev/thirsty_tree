@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { TableColumn } from "./TableColumn";
-import { SplitButton } from "./SplitButton";
+import { SplitButtonTable } from "./SplitButtonTable";
 import "../css/Table.css";
 
-export const Table = ({ childCountArray, id, filter, setFilter }) => {
-  const options = childCountArray
-    .map((arr) => arr[0][0])
-    .filter((element, index, array) => array.indexOf(element) === index);
-
+export const Table = ({ childCountArray, id, filter, setFilter, options }) => {
+  
   return (
     <>
       <div className="table" id={id}>
         <div className="table-header">
           <div>
-            <SplitButton setFilter={setFilter} options={options} />
+            <SplitButtonTable setFilter={setFilter} options={options} />
           </div>
           <div>
             <span className="text">No. of Childs</span>

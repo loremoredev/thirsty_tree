@@ -1,9 +1,9 @@
 .table {
   width: 100%;
-  border: 3px solid gray;
+  border: 1px solid gray;
 }
 .table-header {
-  border-bottom: 3px solid gray;
+  border-bottom: 1px solid gray;
   background-color: #1976d2;
   display: flex;
   gap: 10px;
@@ -42,7 +42,7 @@
   cursor: pointer;
 }
 .arrow {
-  width: 12px;
+  width: 20px;
   padding: 3px;
 }
 .text {
