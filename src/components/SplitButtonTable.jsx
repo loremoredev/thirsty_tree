@@ -9,19 +9,21 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 
-export const SplitButton = ({ setFilter, options }) => {
+export const SplitButtonTable = ({ setFilter, options }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-
+  
   const handleClick = () => {
     setFilter(options[selectedIndex]);
+    
+    
   };
-
   const handleMenuItemClick = (event, index) => {
     setFilter(options[index]);
-    setSelectedIndex(index);
+    setSelectedIndex(index)
     setOpen(false);
+    
   };
 
   const handleToggle = () => {
@@ -43,8 +45,11 @@ export const SplitButton = ({ setFilter, options }) => {
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
+       
         <Button onClick={handleClick}>
-          {options[selectedIndex] || "parent"}
+          {options[selectedIndex]
+            ? options[selectedIndex]
+            : "parent"}
         </Button>
         <Button
           size="small"

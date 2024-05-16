@@ -15,7 +15,11 @@
 .cm-editor {
   height: 75vh;
   margin-bottom: 30px;
-  border: 3px solid gray;
+  border: 1px solid gray;
+  box-shadow: -8px 4px 8px 0 rgba(0, 0, 0, 0.2), 8px 0 8px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .output {
   width: 50%;
@@ -31,9 +35,16 @@
   color: white;
   font-weight: bolder;
 }
-.table-container {
-  display: flex;
+.editor-widget {
   width: 100%;
-  padding: 20px;
-  gap: 30px;
+  border: 1px solid gray;
+  border-bottom: 0;
+  padding: 10px;
+  gap: 5px;
+  display: flex;
+  box-shadow: -8px -4px 8px 0 rgba(0, 0, 0, 0.2),
+    8px 0 8px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
