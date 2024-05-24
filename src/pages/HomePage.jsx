@@ -2,15 +2,16 @@ import React from "react";
 import { Editor } from "../components/Editor";
 import { NavBar } from "../components/NavBar";
 import "../css/HomePage.css";
-export const HomePage = ({ setCustomTheme, customTheme }) => {
+export const HomePage = ({ setCustomTheme, customTheme, Theme }) => {
   return (
     <>
       <NavBar
         setCustomTheme={setCustomTheme}
         customTheme={customTheme}
+        Theme={Theme}
       ></NavBar>
       <div className="container">
-        <Editor id={1}></Editor>
+        <Editor id={1} Theme={Theme}></Editor>
         <Editor id={2}></Editor>
       </div>
     </>

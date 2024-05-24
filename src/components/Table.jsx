@@ -4,7 +4,6 @@ import { SplitButtonTable } from "./SplitButtonTable";
 import "../css/Table.css";
 
 export const Table = ({ childCountArray, id, filter, setFilter, options }) => {
-  
   return (
     <>
       <div className="table" id={id}>
@@ -16,7 +15,7 @@ export const Table = ({ childCountArray, id, filter, setFilter, options }) => {
             <span className="text">No. of Childs</span>
           </div>
         </div>
-        <div className="table-body">
+        <div className="table-body secondary-color">
           {childCountArray.length > 0 ? (
             childCountArray.map((item) => (
               <TableColumn

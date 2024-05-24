@@ -15,8 +15,8 @@
 .cm-editor {
   height: 75vh;
   margin-bottom: 30px;
-  border: 1px solid gray;
-  box-shadow: -8px 4px 8px 0 rgba(0, 0, 0, 0.2), 8px 0 8px 0 rgba(0, 0, 0, 0.19);
+  border: 2px solid #66B0B2;
+  /* box-shadow: -8px 4px 8px 0 rgba(0, 0, 0, 0.2), 8px 0 8px 0 rgba(0, 0, 0, 0.19); */
   border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -37,14 +37,21 @@
 }
 .editor-widget {
   width: 100%;
-  border: 1px solid gray;
+  border: 2px solid #66B0B2;
   border-bottom: 0;
   padding: 10px;
   gap: 5px;
   display: flex;
-  box-shadow: -8px -4px 8px 0 rgba(0, 0, 0, 0.2),
-    8px 0 8px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: -8px -4px 8px 0 rgba(0, 0, 0, 0.2),
+    8px 0 8px 0 rgba(0, 0, 0, 0.19); */
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  background-color: #E4F4E0;
+}
+.searchbox{
+  width: 100%
+}
+.hidden{
+  display: none;
 }
