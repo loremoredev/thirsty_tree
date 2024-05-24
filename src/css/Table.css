@@ -1,13 +1,13 @@
 .table {
   width: 100%;
-  border: 1px solid gray;
+  border: 1px solid #66b0b2;
 }
 .table-header {
-  border-bottom: 1px solid gray;
-  background-color: #1976d2;
+  border-bottom: 1px solid #66b0b2;
+  background-color: #66b0b2;
   display: flex;
   gap: 10px;
-  color: #fff;
+  color: #000;
   align-items: center;
   text-transform: uppercase;
 }
@@ -18,7 +18,7 @@
 
 .table-row {
   display: flex;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #3e7674;
   gap: 10px;
 }
 .table-row:last-child {

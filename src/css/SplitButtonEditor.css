@@ -1,0 +1,12 @@
+.options {
+  display: flex;
+  gap: 10px;
+  width: 250px;
+  justify-content: space-between;
+  margin: 0;
+}
+.flex-end {
+  background-color: #3e7674;
+  border-radius: 100%;
+  padding: 5px;
+}

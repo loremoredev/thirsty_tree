@@ -1,4 +1,18 @@
 body {
+  background-color: #aee0e4 !important;
   margin: 0;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  scrollbar-color: #3e7674 #66b0b2;
+}
+.primary-color {
+  background-color: #66b0b2;
+}
+.secondary-color {
+  background-color: #e4f4e0;
+}
+.tertiary-color {
+  background-color: #3e7674;
+}
+.primary-text-color {
+  color: #66b0b2;
 }

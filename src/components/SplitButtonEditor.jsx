@@ -10,27 +10,29 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import {foldOnIndentLvl} from '../modules/codemirror.js'
+import '../css/SplitButtonEditor.css'
 
 export const SplitButtonEditor = ({ options, editorView }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [foldLevel, setFoldLevel] = useState(2);
+  const [foldLevel, setFoldLevel] = useState(0);
+  const [hide, setHide] = useState(true);
   const filteredOptions = options.filter((value) => {
     return value !== "root" && value !== "child";
   });
-  const handleClick = () => {
-    console.log(filteredOptions)
-    foldOnIndentLvl(editorView, foldLevel)
+  const handleClick = (event) => {
+    const newFoldLevel = Number (event.target.innerText[5]) * 2;
+    setFoldLevel(newFoldLevel);
+    foldOnIndentLvl(editorView, newFoldLevel, hide);
+    setHide(!hide);
   };
   const handleMenuItemClick = (event, index) => {
-    const newFoldLevel = Number (event.target.innerText[5]);
-    console.log(typeof newFoldLevel)
-    foldOnIndentLvl(editorView, newFoldLevel);
+    setHide(!hide);
+    const newFoldLevel = Number (event.target.innerText[5])*2;
+    foldOnIndentLvl(editorView, newFoldLevel, hide);
     setFoldLevel(newFoldLevel);
     setSelectedIndex(index);
-    console.log(newFoldLevel);
-    
     setOpen(false);
   };
 
@@ -45,7 +47,6 @@ export const SplitButtonEditor = ({ options, editorView }) => {
 
     setOpen(false);
   };
-
   return (
     <React.Fragment>
       <ButtonGroup
@@ -54,9 +55,9 @@ export const SplitButtonEditor = ({ options, editorView }) => {
         aria-label="Button group with a nested menu"
       >
         {/* {console.log(options[selectedIndex])} */}
-        <Button onClick={handleClick}>
-          {options[foldLevel]
-            ? `Hide ${filteredOptions[selectedIndex]}`
+        <Button onClick={(event) => handleClick(event)}>
+          {options[0]
+            ? hide ? `Hide ${filteredOptions[selectedIndex]}` : `UnHide ${filteredOptions[selectedIndex]}`
             : `Hide 1 st Level Parent`}
         </Button>
         <Button
@@ -97,7 +98,12 @@ export const SplitButtonEditor = ({ options, editorView }) => {
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {`Hide ${option}`}
+                      <p className="options">
+                      <span>{`Hide ${option}`}</span>
+                      
+                      <span className="flex-end">100</span>
+                      </p>
+                      
                     </MenuItem>
                   ))}
                 </MenuList>

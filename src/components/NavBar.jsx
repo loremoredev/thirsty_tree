@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Switch from "@mui/material/Switch";
@@ -85,7 +84,7 @@ export const NavBar = ({ setCustomTheme }) => {
                   textDecoration: "none",
                 }}
               >
-                THIRSTYTREE
+                <span className="primary-text-color">THIRSTYTREE</span>
               </Typography>
             </div>
 
@@ -101,17 +100,16 @@ export const NavBar = ({ setCustomTheme }) => {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
                 textDecoration: "none",
               }}
             >
-              THIRSTYTREE
+              <span className="primary-color">THIRSTYTREE</span>
             </Typography>
             <Box>
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<MaterialUISwitch sx={{ m: 1 }} />}
                 onClick={toggleTheme}
-              />
+              /> */}
             </Box>
           </Toolbar>
         </Container>
