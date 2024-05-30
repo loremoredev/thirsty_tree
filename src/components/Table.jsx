@@ -17,12 +17,13 @@ export const Table = ({ childCountArray, id, filter, setFilter, options }) => {
         </div>
         <div className="table-body secondary-color">
           {childCountArray.length > 0 ? (
-            childCountArray.map((item) => (
+            childCountArray.map((item, index) => (
               <TableColumn
                 item={item}
                 filter={filter}
                 setFilter={setFilter}
                 id={id}
+                key={index}
               />
             ))
           ) : (

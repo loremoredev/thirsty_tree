@@ -26,14 +26,6 @@ export const Editor = ({ id }) => {
   const options = childCountArray
     .map((arr) => arr[0][0])
     .filter((element, index, array) => array.indexOf(element) === index);
-  let firstLevelChildCount = 0;
-  const numberOptions = options.length;
-  // console.log(numberOptions);
-  childCountArray.forEach((item) => {
-    if (item[0][0] === "1 st level parent") {
-      firstLevelChildCount += item[0][1];
-    }
-  });
 
   let myTheme = EditorView.theme({
     "&": {
@@ -113,17 +105,24 @@ export const Editor = ({ id }) => {
 
   return (
     <>
-      <div className="editor-container">
-        <div className="editor-widget">
-          <SplitButtonEditor
-            options={options}
-            editorView={editorView}
-          ></SplitButtonEditor>
-          <Button id="format-button" variant="contained" onClick={formatToJson}>
-            Format
-          </Button>
+      <div className="child-container">
+        <div className="editor-container">
+          <div className="editor-widget">
+            <SplitButtonEditor
+              options={options}
+              editorView={editorView}
+              childCountArray={childCountArray}
+            ></SplitButtonEditor>
+            <Button
+              id="format-button"
+              variant="contained"
+              onClick={formatToJson}
+            >
+              Format
+            </Button>
+          </div>
+          <div ref={editor}></div>
         </div>
-        <div ref={editor}></div>
         <Table
           childCountArray={childCountArray}
           id={id}

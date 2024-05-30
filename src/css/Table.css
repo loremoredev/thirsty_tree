@@ -1,6 +1,7 @@
 .table {
-  width: 100%;
+  width: 35%;
   border: 1px solid #66b0b2;
+  height: min-content;
 }
 .table-header {
   border-bottom: 1px solid #66b0b2;

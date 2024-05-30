@@ -12,7 +12,6 @@ export const HomePage = ({ setCustomTheme, customTheme, Theme }) => {
       ></NavBar>
       <div className="container">
         <Editor id={1} Theme={Theme}></Editor>
-        <Editor id={2}></Editor>
       </div>
     </>
   );

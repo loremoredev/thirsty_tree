@@ -1,9 +1,11 @@
-.editor-container {
-  width: 45%;
+.child-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
 }
 .codemirror-editor {
   height: 75vh;
-  width: 200%;
 }
 .button-container {
   display: flex;
@@ -11,33 +13,27 @@
   padding: 20px;
   gap: 30px;
 }
-
+.editor-container {
+  width: 60%;
+}
 .cm-editor {
   height: 75vh;
   margin-bottom: 30px;
-  border: 2px solid #66B0B2;
+  border: 2px solid #66b0b2;
   /* box-shadow: -8px 4px 8px 0 rgba(0, 0, 0, 0.2), 8px 0 8px 0 rgba(0, 0, 0, 0.19); */
   border-radius: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.output {
-  width: 50%;
-  font-size: 30px;
-  font-weight: bold;
-}
+
 .button {
   background-color: darkgreen;
   color: white;
 }
-.test {
-  background-color: black !important;
-  color: white;
-  font-weight: bolder;
-}
+
 .editor-widget {
   width: 100%;
-  border: 2px solid #66B0B2;
+  border: 2px solid #66b0b2;
   border-bottom: 0;
   padding: 10px;
   gap: 5px;
@@ -47,11 +43,16 @@
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background-color: #E4F4E0;
+  background-color: #e4f4e0;
 }
-.searchbox{
-  width: 100%
+.searchbox {
+  width: 100%;
 }
-.hidden{
+.hidden {
   display: none;
+}
+.output {
+  width: 50%;
+  font-size: 30px;
+  font-weight: bold;
 }
