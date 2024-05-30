@@ -3,6 +3,7 @@ import {
   foldEffect,
   unfoldAll,
   unfoldEffect,
+  foldAll,
 } from "@codemirror/language";
 
 let countArray;
@@ -170,7 +171,10 @@ export function foldOnIndentLvl(view, indentLevel, hide) {
   const state = view.state;
   const doc = state.doc;
   const foldingRanges = [];
-
+  if (indentLevel === 0) {
+    hide ? foldAll(view) : unfoldAll(view);
+    return 0;
+  }
   // Loop through all lines of the editor doc
   const numberOfLines = doc.lines;
   for (let line = 1; line < numberOfLines; line++) {
@@ -190,7 +194,6 @@ export function foldOnIndentLvl(view, indentLevel, hide) {
   for (const foldingRange of foldingRanges) {
     const line = doc.lineAt(foldingRange.from); // Get line from folding start position
     const lineIntendation = line.text.match(/^\s*/)?.[0].length; // Get intendation of line
-    console.log(hide);
     hide ||
       view.dispatch({
         effects: unfoldEffect.of({
@@ -198,6 +201,7 @@ export function foldOnIndentLvl(view, indentLevel, hide) {
           to: foldingRange.to,
         }),
       });
+
     // If line has no intendation or intendation is smaller than the indent level, continue (don't fold)
     if (!lineIntendation || lineIntendation !== indentLevel) {
       continue;

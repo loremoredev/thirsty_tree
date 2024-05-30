@@ -4,9 +4,16 @@
   width: 250px;
   justify-content: space-between;
   margin: 0;
+  align-items: center;
 }
 .flex-end {
-  background-color: #3e7674;
+  background-color: #e4f4e0;
+  color: #66b0b2;
   border-radius: 100%;
   padding: 5px;
+  width: max-content;
+  cursor: pointer;
+}
+.hidden {
+  background-color: black;
 }
