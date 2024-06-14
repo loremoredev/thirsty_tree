@@ -2,9 +2,8 @@
 // import React, { useState, useEffect } from "react";
 // import { ThemeProvider, createTheme } from "@mui/material/styles";
 // import CssBaseline from "@mui/material/CssBaseline";
-import BuilderPage from "./builder-page";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./home-page";
+import BuilderPage from "./builder-page";
 import ThirstyTree from "./ThirstyTree";
 
 // export default function App() {
@@ -45,7 +44,8 @@ function App() {
       <Routes>
         // Add route here
         {/* <switch> */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<ThirstyTree />} />
+        <Route path="/blog" element={<BuilderPage />} />
         <Route path="/builder-demo" element={<BuilderPage />} />
         <Route path="/thirsty-tree" element={<ThirstyTree />} />
         {/*   <Route
