@@ -13,17 +13,14 @@ export const SplitButtonTable = ({ setFilter, options }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  
+
   const handleClick = () => {
     setFilter(options[selectedIndex]);
-    
-    
   };
   const handleMenuItemClick = (event, index) => {
     setFilter(options[index]);
-    setSelectedIndex(index)
+    setSelectedIndex(index);
     setOpen(false);
-    
   };
 
   const handleToggle = () => {
@@ -45,11 +42,8 @@ export const SplitButtonTable = ({ setFilter, options }) => {
         ref={anchorRef}
         aria-label="Button group with a nested menu"
       >
-       
         <Button onClick={handleClick}>
-          {options[selectedIndex]
-            ? options[selectedIndex]
-            : "parent"}
+          {options[selectedIndex] ? options[selectedIndex] : "parent"}
         </Button>
         <Button
           size="small"
@@ -83,15 +77,18 @@ export const SplitButtonTable = ({ setFilter, options }) => {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id="split-button-menu" autoFocusItem>
-                  {options.map((option, index) => (
-                    <MenuItem
-                      key={option}
-                      selected={index === selectedIndex}
-                      onClick={(event) => handleMenuItemClick(event, index)}
-                    >
-                      {option}
-                    </MenuItem>
-                  ))}
+                  {options.map(
+                    (option, index) =>
+                      option !== "child" && (
+                        <MenuItem
+                          key={option}
+                          selected={index === selectedIndex}
+                          onClick={(event) => handleMenuItemClick(event, index)}
+                        >
+                          {option}
+                        </MenuItem>
+                      )
+                  )}
                 </MenuList>
               </ClickAwayListener>
             </Paper>

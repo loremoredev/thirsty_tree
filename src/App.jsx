@@ -2,13 +2,17 @@ import { HomePage } from "./pages/HomePage";
 import React, { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import "../index.css";
 
 export default function App() {
   const [customTheme, setCustomTheme] = useState("light");
   const Theme = createTheme({
+    typography: {
+      fontFamily: "var(--font-family)",
+    },
     palette: {
       primary: {
-        main: "#66B0B2",
+        main: "var(--primary-color)",
         light: "#AEE0E4",
         // dark: will be calculated from palette.primary.main,
         // contrastText: "#3e7674",

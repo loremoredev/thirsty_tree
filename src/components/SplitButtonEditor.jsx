@@ -16,7 +16,6 @@ export const SplitButtonEditor = ({ options, editorView, childCountArray }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [hiddenItems, setHiddenItems] = useState({});
   const [foldLevel, setFoldLevel] = useState(0);
   const [hide, setHide] = useState(true);
   const [numofLevelChild, setNumofLevelChild] = useState([]);
@@ -44,6 +43,44 @@ export const SplitButtonEditor = ({ options, editorView, childCountArray }) => {
     setNumofLevelChild(updatedNumofLevelChild);
   }, [options, childCountArray]);
 
+  useEffect(() => {
+    if (numofLevelChild.length > 0) {
+      foldOnIndentLvl(
+        editorView,
+        foldLevel,
+        selectedIndex,
+        numofLevelChild,
+        setNumofLevelChild
+      );
+    }
+  }, [hide]);
+
+  const handleClick = (event) => {
+    const newFoldLevel =
+      event.target.innerText === "HIDE ROOT" && "UNHIDE ROOT"
+        ? 0
+        : Number(event.target.innerText[5]) * 2;
+    setFoldLevel(newFoldLevel);
+    foldOnIndentLvl(
+      editorView,
+      foldLevel,
+      selectedIndex,
+      numofLevelChild,
+      setNumofLevelChild
+    );
+    setHide(!hide);
+    toggleHidden(selectedIndex);
+  };
+  const handleMenuItemClick = (event, index) => {
+    setFoldLevel(
+      event.target.firstChild.innerText === "Hide root" && "Unhide root"
+        ? 0
+        : index * 2
+    );
+    setSelectedIndex(index);
+    setHide(!hide);
+    setOpen(false);
+  };
   const toggleHidden = (idx) => {
     setNumofLevelChild((prevNumofLevelChild) =>
       prevNumofLevelChild.map((item, index) =>
@@ -53,29 +90,6 @@ export const SplitButtonEditor = ({ options, editorView, childCountArray }) => {
       )
     );
   };
-  const handleClick = (event) => {
-    const newFoldLevel =
-      event.target.innerText === "HIDE ROOT" && "UNHIDE ROOT"
-        ? 0
-        : Number(event.target.innerText[5]) * 2;
-    setFoldLevel(newFoldLevel);
-    foldOnIndentLvl(editorView, newFoldLevel, hide);
-    setHide(!hide);
-    toggleHidden(selectedIndex);
-  };
-  const handleMenuItemClick = (event, index) => {
-    const newFoldLevel =
-      event.target.firstChild.innerText === "Hide root" && "Unhide root"
-        ? 0
-        : Number(event.target.innerText[5]) * 2;
-    setHide(!hide);
-    foldOnIndentLvl(editorView, newFoldLevel, hide);
-    setFoldLevel(newFoldLevel);
-    setSelectedIndex(index);
-    setOpen(false);
-    toggleHidden(index);
-  };
-
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -96,14 +110,20 @@ export const SplitButtonEditor = ({ options, editorView, childCountArray }) => {
         aria-label="Button group with a nested menu"
       >
         <Button
-          sx={!hide ? { opacity: "0.6" } : {}}
+          sx={
+            // editorView?.contentDOM?.innerText &&
+            // editorView.contentDOM.innerText === " "
+            //   ? { opacity: "0.6" }
+            //   : {}
+            options[0] ? {} : { opacity: "0.6" }
+          }
           onClick={(event) => options[0] && handleClick(event)}
         >
-          {options[0]
-            ? hide
-              ? `Hide ${filteredOptions[selectedIndex]}`
-              : `UnHide ${filteredOptions[selectedIndex]}`
-            : `Hide 1 st Level Parent`}
+          {numofLevelChild[selectedIndex]
+            ? numofLevelChild[selectedIndex][2].hidden
+              ? `Unhide ${filteredOptions[selectedIndex]}`
+              : `Hide ${filteredOptions[selectedIndex]}`
+            : `Enter the JSON`}
         </Button>
         <Button
           size="small"

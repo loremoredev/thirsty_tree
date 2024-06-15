@@ -14,10 +14,11 @@ import "../css/Editor.css";
 import { foldService, unfoldAll } from "@codemirror/language";
 import { getFoldingRangesByIndent } from "../modules/codemirror";
 import jmespath from "jmespath";
+// import QuickAction from "./QuickAction";
 
 export const Editor = ({ id }) => {
   const [childCountArray, setChildCountArray] = useState([]);
-  const [filter, setFilter] = useState("root");
+  const [filter, setFilter] = useState("");
   const [startState, setStartState] = useState(null);
   const [editorView, setEditorView] = useState(null);
   const [openToast, setOpenToast] = useState(false);

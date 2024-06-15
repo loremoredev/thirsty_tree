@@ -84,7 +84,7 @@ export const NavBar = ({ setCustomTheme }) => {
                   textDecoration: "none",
                 }}
               >
-                <span className="primary-text-color">THIRSTYTREE</span>
+                <span className="primary-text-color">THIRSTYJSON</span>
               </Typography>
             </div>
 
@@ -103,7 +103,7 @@ export const NavBar = ({ setCustomTheme }) => {
                 textDecoration: "none",
               }}
             >
-              <span className="primary-color">THIRSTYTREE</span>
+              <span className="primary-color">THIRSTJSON</span>
             </Typography>
             <Box>
               {/* <FormControlLabel

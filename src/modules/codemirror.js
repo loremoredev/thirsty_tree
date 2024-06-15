@@ -73,12 +73,13 @@ export const countChildren = (jsonObj, level = 1, prefix = "", result = {}) => {
 
 export const handleTableExpand = (event, id) => {
   const parent = event.target.closest(".table-row");
-  if (parent.textContent.includes("root")) {
+  if (parent.firstElementChild.innerText === "root") {
     const table = document.getElementById(`${id}`);
     const tableRows = table.querySelectorAll(".table-row");
+
     tableRows.forEach((row) => {
       const tableDataLeft = row.firstElementChild;
-      if (tableDataLeft.textContent === "1 st level parent") {
+      if (tableDataLeft.textContent.includes("1 st level parent")) {
         if (row.classList.contains("hidden")) {
           row.classList.remove("hidden");
         } else {
@@ -113,7 +114,6 @@ export const handleTableExpand = (event, id) => {
           return;
         }
         if (removeHidden) {
-          console.log(nextLevelParentText);
           // if (
           //   parent2.firstElementChild.textContent === nextLevelParentText ||
           //   "child"
@@ -167,14 +167,22 @@ export const getFoldingRangesByIndent = (state, from, to) => {
   return { from: foldStart, to: foldEnd };
 };
 
-export function foldOnIndentLvl(view, indentLevel, hide) {
+export function foldOnIndentLvl(
+  view,
+  indentLevel,
+  index,
+  childArray,
+  setNumofLevelChild
+) {
+  let flag = true;
   const state = view.state;
   const doc = state.doc;
   const foldingRanges = [];
-  if (indentLevel === 0) {
-    hide ? foldAll(view) : unfoldAll(view);
-    return 0;
-  }
+  // if (indentLevel === 0) {
+  //   console.log(indentLevel);
+  //   hide ? foldAll(view) : unfoldAll(view);
+  //   return 0;
+  // }
   // Loop through all lines of the editor doc
   const numberOfLines = doc.lines;
   for (let line = 1; line < numberOfLines; line++) {
@@ -194,22 +202,55 @@ export function foldOnIndentLvl(view, indentLevel, hide) {
   for (const foldingRange of foldingRanges) {
     const line = doc.lineAt(foldingRange.from); // Get line from folding start position
     const lineIntendation = line.text.match(/^\s*/)?.[0].length; // Get intendation of line
-    hide ||
-      view.dispatch({
-        effects: unfoldEffect.of({
-          from: foldingRange.from,
-          to: foldingRange.to,
-        }),
-      });
-
-    // If line has no intendation or intendation is smaller than the indent level, continue (don't fold)
-    if (!lineIntendation || lineIntendation !== indentLevel) {
-      continue;
+    if (childArray[index][2].hidden === true) {
+      if (lineIntendation < indentLevel || lineIntendation === indentLevel) {
+        view.dispatch({
+          effects: unfoldEffect.of({
+            from: foldingRange.from,
+            to: foldingRange.to,
+          }),
+        });
+      }
+      if (flag) {
+        setNumofLevelChild((prevNumofLevelChild) =>
+          prevNumofLevelChild.map((item, idx) =>
+            index >= idx ? [...item.slice(0, 2), { hidden: false }] : item
+          )
+        );
+        flag = false;
+      }
+    } else {
+      if (lineIntendation === indentLevel) {
+        view.dispatch({
+          effects: foldEffect.of({
+            from: foldingRange.from,
+            to: foldingRange.to,
+          }),
+        });
+      }
+      if (flag) {
+        setNumofLevelChild((prevNumofLevelChild) =>
+          prevNumofLevelChild.map((item, idx) =>
+            index === idx
+              ? [...item.slice(0, 2), { hidden: !item[2].hidden }]
+              : item
+          )
+        );
+        flag = false;
+      }
     }
 
-    // Fold the given range
-    view.dispatch({
-      effects: foldEffect.of({ from: foldingRange.from, to: foldingRange.to }),
-    });
+    // If line has no intendation or intendation is smaller than the indent level, continue (don't fold)
+    // if (lineIntendation || lineIntendation === indentLevel) {
+    //   continue;
+    // }
+    // childArray[index][2].hidden &&
+    //   // Fold the given range
+    //   view.dispatch({
+    //     effects: foldEffect.of({
+    //       from: foldingRange.from,
+    //       to: foldingRange.to,
+    //     }),
+    //   });
   }
 }

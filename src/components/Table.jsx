@@ -17,15 +17,18 @@ export const Table = ({ childCountArray, id, filter, setFilter, options }) => {
         </div>
         <div className="table-body secondary-color">
           {childCountArray.length > 0 ? (
-            childCountArray.map((item, index) => (
-              <TableColumn
-                item={item}
-                filter={filter}
-                setFilter={setFilter}
-                id={id}
-                key={index}
-              />
-            ))
+            childCountArray.map(
+              (item, index) =>
+                item[0][0] !== "child" && (
+                  <TableColumn
+                    item={item}
+                    filter={filter}
+                    setFilter={setFilter}
+                    id={id}
+                    key={index}
+                  />
+                )
+            )
           ) : (
             <div className="add-data">
               <span>Add data in the editor to see the result</span>
