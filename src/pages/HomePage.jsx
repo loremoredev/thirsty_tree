@@ -13,9 +13,6 @@ export const HomePage = ({ setCustomTheme, customTheme, Theme }) => {
       <div className="container">
         <Editor id={1} Theme={Theme}></Editor>
       </div>
-      <div>
-        <a href="blog">Blog</a>
-      </div>
     </>
   );
 };
