@@ -12,7 +12,7 @@ export default function App() {
     },
     palette: {
       primary: {
-        main: "var(--primary-color)",
+        main: "#66b0b2",
         light: "#AEE0E4",
         // dark: will be calculated from palette.primary.main,
         // contrastText: "#3e7674",
