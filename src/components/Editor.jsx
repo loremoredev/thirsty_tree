@@ -122,7 +122,7 @@ export const Editor = ({ id }) => {
               Format
             </Button>
           </div>
-          <div ref={editor}></div>
+          <div ref={editor} className="editor"></div>
         </div>
         <Table
           childCountArray={childCountArray}
