@@ -1,9 +1,10 @@
-** 1. How to run the project locally**
+**1. How to run the project locally**
 
 Run the following commands to setup the project:
 
-$npm i
-$npm run dev
+-`$npm i`
+
+-`$npm run dev`
 
 Step 1 installs all the packages
 
@@ -30,7 +31,7 @@ Run the project following commands
 
 run the project locally to get the local host url. In another command line session run the following command
 
-$npm run cy-open
+`$npm run cy-open`
 
 ```
 
@@ -44,7 +45,7 @@ cypress open
 This will open a cypress server
 
 
-You can edit the tests in cypress/e2e/Editor.cy.js
+You can edit the tests in `cypress/e2e/Editor.cy.js`
 
 
-[/screenshots/CypressTestRunning.png](//screenshots/CypressTestRunning.png)
+![cypress Screenhot](./screenshots/CypressTestRunning.png)
