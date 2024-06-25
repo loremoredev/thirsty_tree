@@ -1,4 +1,3 @@
----
 ** 1. How to run the project locally**
 
 Run the following commands to setup the project:
