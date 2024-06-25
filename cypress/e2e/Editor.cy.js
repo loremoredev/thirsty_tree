@@ -42,7 +42,7 @@ const jsonString = {
 };
 describe("Formatting test", () => {
   it("Visits the homepage", () => {
-    cy.visit("thirsty-tree-6rar3h9eb-thirst-tree.vercel.app");
+    cy.visit("http://localhost:5173/");
 
     cy.get(".editor").type(JSON.stringify(jsonString), {
       parseSpecialCharSequences: false,
