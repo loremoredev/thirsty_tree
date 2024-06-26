@@ -1,8 +1,10 @@
 import { HomePage } from "./pages/HomePage";
+import BuilderPage from "./builder-page";
 import React, { useState, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import "../index.css";
+import { Routes, Route } from "react-router-dom";
 
 export default function App() {
   const [customTheme, setCustomTheme] = useState("light");
@@ -30,14 +32,27 @@ export default function App() {
   });
   return (
     <React.StrictMode>
-      <ThemeProvider theme={Theme}>
-        <CssBaseline />
-        <HomePage
+      {/* <HomePage
           setCustomTheme={setCustomTheme}
           customTheme={customTheme}
           Theme={Theme}
-        ></HomePage>
-      </ThemeProvider>
+        ></HomePage> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ThemeProvider theme={Theme}>
+              <CssBaseline />
+              <HomePage
+                setCustomTheme={setCustomTheme}
+                customTheme={customTheme}
+                Theme={Theme}
+              ></HomePage>
+            </ThemeProvider>
+          }
+        ></Route>
+        <Route path="/blog" element={<BuilderPage />}></Route>
+      </Routes>
     </React.StrictMode>
   );
 }

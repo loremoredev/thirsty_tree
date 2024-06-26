@@ -14,7 +14,7 @@ export const HomePage = ({ setCustomTheme, customTheme, Theme }) => {
         <Editor id={1} Theme={Theme}></Editor>
       </div>
       <div>
-        <a href="/blog">Builder.io</a>
+        <a href="/blog">Thirsty Tree blog</a>
       </div>
     </>
   );
