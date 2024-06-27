@@ -13,9 +13,9 @@ const months = [
   "November",
   "December",
 ];
-const octokit = new Octokit({
-  auth: "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",
-});
+// const octokit = new Octokit({
+//   auth: "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",
+// });
 export function getData(setDate) {
   const result = octokit
     .request("GET /repos/loremoredev/thirsty_tree/events", {
