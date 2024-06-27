@@ -14,7 +14,7 @@ const months = [
   "December",
 ];
 const octokit = new Octokit({
-  auth: "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",
+  auth: "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",
 });
 export function getData(setDate) {
   const result = octokit
@@ -29,8 +29,7 @@ export function getData(setDate) {
       const data = response.data;
       const pushEventToMain = data.find(
         (push) =>
-          push.type === "PushEvent" &&
-          push.payload.ref === "refs/heads/TT-DV06-cypress"
+          push.type === "PushEvent" && push.payload.ref === "refs/heads/main"
       );
       const latestCommitDate = new Date(pushEventToMain.created_at)
         .toISOString()
