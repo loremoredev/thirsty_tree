@@ -2,6 +2,7 @@ import React from "react";
 import { Editor } from "../components/Editor";
 import { NavBar } from "../components/NavBar";
 import "../css/HomePage.css";
+import Footer from "../components/Footer";
 export const HomePage = ({ setCustomTheme, customTheme, Theme }) => {
   return (
     <>
@@ -13,6 +14,7 @@ export const HomePage = ({ setCustomTheme, customTheme, Theme }) => {
       <div className="container">
         <Editor id={1} Theme={Theme}></Editor>
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { getData } from "../../src/modules/octokit";
 const jsonString = {
   ctRoot: [
     {
@@ -42,7 +43,7 @@ const jsonString = {
 };
 describe("Formatting test", () => {
   it("Visits the homepage", () => {
-    cy.visit("http://localhost:5173/");
+    cy.visit(`https://thirsty-tree-git-${getData()}-thirst-tree.vercel.app/`);
 
     cy.get(".editor").type(JSON.stringify(jsonString), {
       parseSpecialCharSequences: false,

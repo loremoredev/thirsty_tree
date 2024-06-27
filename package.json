@@ -38,6 +38,12 @@
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "octokit": "^4.0.2",
     "vite": "^5.1.6"
-  }
+  },
+  "description": "Run the following commands to setup the project:\r     1. npm i\r     2. npm run dev",
+  "main": "cypress.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
