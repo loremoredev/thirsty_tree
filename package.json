@@ -22,12 +22,17 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.14",
+    "browserify-fs": "^1.0.0",
     "codemirror": "^6.0.1",
+    "export-from-json": "^1.7.4",
     "jmespath": "^0.16.0",
+    "json-2-csv": "^5.5.1",
+    "json-to-csv-export": "^2.1.1",
     "package": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "util": "^0.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
