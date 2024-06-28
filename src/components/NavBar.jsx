@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Switch from "@mui/material/Switch";
 import Toolbar from "@mui/material/Toolbar";
@@ -58,6 +59,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export const NavBar = ({ setCustomTheme }) => {
+  const [date, setDate] = useState("");
   const toggleTheme = () => {
     // Use the functional form of setState to set the state based on its previous value
     setCustomTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));

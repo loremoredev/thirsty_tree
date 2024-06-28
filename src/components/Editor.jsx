@@ -13,6 +13,11 @@ import { Button } from "@mui/material";
 import "../css/Editor.css";
 import { foldService, unfoldAll } from "@codemirror/language";
 import { getFoldingRangesByIndent } from "../modules/codemirror";
+// import { json2csv } from "json-2-csv";
+// import exportFromJSON from "export-from-json";
+// import csvDownload from "json-to-csv-export";
+
+// const exportType = exportFromJSON.types.csv;
 import jmespath from "jmespath";
 // import QuickAction from "./QuickAction";
 
@@ -89,9 +94,73 @@ export const Editor = ({ id }) => {
       button.click();
     });
   };
+  const data = {
+    ctRoot: [
+      {
+        _id: "FUNMA6Q0VCNQIYPO",
+        name: "Jeane Muhammad",
+        dob: "2015-05-29",
+        address: {
+          street: "6887 Irvine Road",
+          town: "Mexborough",
+          postode: "PR09 5YR",
+        },
+        telephone: "+212-6919-387-694",
+        pets: ["Cali", "Oliver"],
+        score: 2.1,
+        email: "vannesa-crook0@sofa.com",
+        url: "http://www.backed.com",
+        description:
+          "considered preparing decide lit etc depression downloading bra keep rose ru hotels nurses styles soa supposed guess judges disciplines resistance",
+        verified: true,
+        salary: 64370,
+      },
+      {
+        _id: "R3VAH6QLAI6LC3Y0",
+        name: "Fawn Waters",
+        dob: "2022-06-11",
+        address: {
+          street: "6158 Ledgard Circle",
+          town: "Basingstoke",
+          postode: "E85 8IT",
+        },
+        telephone: "+53-8208-009-605",
+        pets: ["Kiki", "Emma"],
+        score: 7,
+        email: "suzan_obryan@hotmail.com",
+        url: "http://agricultural.com",
+        description:
+          "urls jungle popularity magic david jp jade equilibrium amateur options ye virtual adjust anything wto weights gothic betting ecommerce moment",
+        verified: true,
+        salary: 32885,
+      },
+    ],
+  };
+  const fileName = "download";
+  function exportToCSV() {
+    console.log("error");
+    // exportFromJSON({ transformedData, fileName, exportType });
+  }
   const formatOptions = {
     indent: 4,
   };
+  const dataToConvert = {
+    data: data,
+    filename: "export",
+    delimiter: ",",
+  };
+  // const exportToCSV = () => {
+  //   try {
+  //     const csv = json2csv(data);
+  //     console.log(csv);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  //   fsync.writeFile("data.csv", csv, (err) => {
+  //     if (err) console.log(err);
+  //     else console.log("file saved");
+  //   });
+  // };
   const formatToJson = () => {
     const docText = editorView.state.doc.toString();
     const formattedJson = fmt2json(docText);
@@ -121,8 +190,11 @@ export const Editor = ({ id }) => {
             >
               Format
             </Button>
+            <Button variant="contained" onClick={exportToCSV}>
+              Export CSV
+            </Button>
           </div>
-          <div ref={editor}></div>
+          <div ref={editor} className="editor"></div>
         </div>
         <Table
           childCountArray={childCountArray}
