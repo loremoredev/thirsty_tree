@@ -32,27 +32,22 @@ export default function App() {
   });
   return (
     <React.StrictMode>
-      {/* <HomePage
-          setCustomTheme={setCustomTheme}
-          customTheme={customTheme}
-          Theme={Theme}
-        ></HomePage> */}
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ThemeProvider theme={Theme}>
-              <CssBaseline />
+      <ThemeProvider theme={Theme}>
+        <CssBaseline />
+        <Routes>
+          <Route
+            path="/"
+            element={
               <HomePage
                 setCustomTheme={setCustomTheme}
                 customTheme={customTheme}
                 Theme={Theme}
               ></HomePage>
-            </ThemeProvider>
-          }
-        ></Route>
-        <Route path="/blog" element={<BuilderPage />}></Route>
-      </Routes>
+            }
+          ></Route>
+          <Route path="/blog" element={<BuilderPage />}></Route>
+        </Routes>
+      </ThemeProvider>
     </React.StrictMode>
   );
 }
