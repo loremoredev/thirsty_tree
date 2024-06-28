@@ -9,7 +9,7 @@ Run the following commands to run the cypress:
     4. You will get Cypress application running
     5. Go to the cypress application and select E2E Testing option
     6. Select the browser to start the test with
-    7. Now select the file you want to test(Right now we have only one "Editor.cy.js")
+    7. Now select the file you want to test(Right now we have only one "Editor.cy.js")...
 
 
 # React + Vite
