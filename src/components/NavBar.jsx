@@ -112,7 +112,6 @@ export const NavBar = ({ setCustomTheme }) => {
                 control={<MaterialUISwitch sx={{ m: 1 }} />}
                 onClick={toggleTheme}
               /> */}
-              <p>test</p>
             </Box>
           </Toolbar>
         </Container>
